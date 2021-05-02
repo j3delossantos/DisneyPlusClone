@@ -10,9 +10,7 @@ function Home() {
             <ImgSider/>
             <Viewers/>
             <Movies/>
-            <br/>
-            <br/>
-            <br/>
+            
         </Container>
     )
 }
