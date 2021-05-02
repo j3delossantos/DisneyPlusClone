@@ -63,12 +63,15 @@ const NavMenu =styled.div`
     a{
         display: flex;
         align-items: center;
-        padding: 0 12px;
+        padding: 0px  12px;
         cursor: pointer;
         
 
         img{
-            height: 20px;
+            height: 25px;
+            padding-right: 5px;
+            
+           
         }
 
         span{

@@ -1,51 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
+import {selectMovies} from '../features/movie/movieSlice'
+import {useSelector} from 'react-redux'
 
 function Movies() {
+
+    const movies = useSelector(selectMovies);
+    
     return (
         <Container>
             <h4>Recommended for you</h4>
 
             <Content>
-                <Wrap>
-                    <img src="/images/Disney_MLP_GridItem_Frozen2_AUNZ.jpg"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/AvengersEndgame.png"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/Onward_es-419.jpg"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/XMenWolverine_ES.jpg"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/Disney_MLP_GridItem_Frozen2_AUNZ.jpg"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/AvengersEndgame.png"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/Onward_es-419.jpg"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/XMenWolverine_ES.jpg"/>
-                </Wrap>
+                { movies &&
+                    movies.map((movie)=>(
+                        <Wrap key={movie.id}>
+                            <img src={movie.cardImg} alt={movie.title}/>
+                        </Wrap>
 
-                <Wrap>
-                    <img src="/images/Disney_MLP_GridItem_Frozen2_AUNZ.jpg"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/AvengersEndgame.png"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/Onward_es-419.jpg"/>
-                </Wrap>
-                <Wrap>
-                    <img src="/images/XMenWolverine_ES.jpg"/>
-                </Wrap>
+                    ))
 
-
+                }
+               
+               <br/>
+               <br/>
+               <br/>
             </Content>
         </Container>
     )
