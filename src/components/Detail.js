@@ -1,18 +1,43 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
+import {useParams} from 'react-router-dom'
+import db from '../firebase'
 
 function Detail() {
+    const {id} = useParams();
+    const [movie, setMovie] = useState();
+
+    useEffect(()=>{
+        //Grab the movie info from the DB
+        db.collection("movies")
+        .doc(id)
+        .get()
+        .then((doc)=>{
+            if (doc.exists) {
+                //save movie data
+                setMovie(doc.data());
+                
+            }else{
+                //redirect to homepage
+            }
+        })
+
+    }, [])
+
+    
     return (
         <Container>
-            <Background>
-                <img src="/images/bao-bg.jfif"/>
+            {movie &&(<> 
+            
+                <Background>
+                <img src={movie.backgroundImg}/>
             </Background>
             <ImageTitle>
-                <img src="/images/bao.png"/>
+                <img src={movie.titleImg}/>
             </ImageTitle>
             <Controlls>
                 <PlayButton>
-                <img src="/images/play-icon-black.png"/>
+                <img src="/images/play-icon-black.png"/> 
                 <span>PLAY</span>
 
                 </PlayButton>
@@ -28,11 +53,13 @@ function Detail() {
                 </GroupWatchButton>
             </Controlls>
             <SubTitle>
-                2018 - 7m - Family, Fantasy, Kids, Animation
+                {movie.subTitle}
             </SubTitle>
             <Description>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                {movie.description}
             </Description>
+            </>)}
+            
         </Container>
     )
 }
