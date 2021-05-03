@@ -123,6 +123,7 @@ const PlayButton=styled.button`
    background: rgb(249, 249, 249);
    letter-spacing: 1.8px;
    cursor: pointer;
+   border-color: transparent;
 
    &:hover {
         background: rgb(198, 198, 198);

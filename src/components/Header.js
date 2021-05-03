@@ -92,7 +92,7 @@ function Header(){
                 </NavMenu>
                 <UserImg 
                     onClick={signOut}
-                    src="/images/Juan.jpg"/>
+                    src={userPhoto}/>
                     </>
 
                 }
